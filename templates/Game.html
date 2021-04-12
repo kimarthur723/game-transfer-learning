@@ -1,0 +1,567 @@
+<html>
+   <head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <style>
+          .element{
+              width: 50px;
+              height: 50px;
+           }
+      </style>
+   </head>
+
+   <body>
+		<!-- Modal -->
+		<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">Choose prediction model</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="runCNN()">CNN</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="runDNN()">DNN</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+      <div class="page-content" style="margin: auto">
+         <table id="table" style="background-color:white">
+            <tr>
+                 <td class="element" id="element_0" data-index=0 data-x=0 data-y=0 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_1" data-index=1 data-x=1 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_2" data-index=2 data-x=2 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_3" data-index=3 data-x=3 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_4" data-index=4 data-x=4 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_5" data-index=5 data-x=5 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_6" data-index=6 data-x=6 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_7" data-index=7 data-x=7 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_8" data-index=8 data-x=8 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_9" data-index=9 data-x=9 data-y=0 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>			
+                 <td class="element" id="element_10" data-index=10 data-x=0 data-y=1 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_11" data-index=11 data-x=1 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_12" data-index=12 data-x=2 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_13" data-index=13 data-x=3 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_14" data-index=14 data-x=4 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_15" data-index=15 data-x=5 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_16" data-index=16 data-x=6 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_17" data-index=17 data-x=7 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_18" data-index=18 data-x=8 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_19" data-index=19 data-x=9 data-y=1 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>	
+                 <td class="element" id="element_20" data-index=20 data-x=0 data-y=2 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_21" data-index=21 data-x=1 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_22" data-index=22 data-x=2 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_23" data-index=23 data-x=3 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_24" data-index=24 data-x=4 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_25" data-index=25 data-x=5 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_26" data-index=26 data-x=6 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_27" data-index=27 data-x=7 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_28" data-index=28 data-x=8 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_29" data-index=29 data-x=9 data-y=2 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>	
+                 <td class="element" id="element_30" data-index=30 data-x=0 data-y=3 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_31" data-index=31 data-x=1 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_32" data-index=32 data-x=2 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_33" data-index=33 data-x=3 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_34" data-index=34 data-x=4 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_35" data-index=35 data-x=5 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_36" data-index=36 data-x=6 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_37" data-index=37 data-x=7 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_38" data-index=38 data-x=8 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_39" data-index=39 data-x=9 data-y=3 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>	
+                 <td class="element" id="element_40" data-index=40 data-x=0 data-y=4 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_41" data-index=41 data-x=1 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_42" data-index=42 data-x=2 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_43" data-index=43 data-x=3 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_44" data-index=44 data-x=4 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_45" data-index=45 data-x=5 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_46" data-index=46 data-x=6 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_47" data-index=47 data-x=7 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_48" data-index=48 data-x=8 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_49" data-index=49 data-x=9 data-y=4 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>	
+                 <td class="element" id="element_50" data-index=50 data-x=0 data-y=5 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_51" data-index=51 data-x=1 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_52" data-index=52 data-x=2 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_53" data-index=53 data-x=3 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_54" data-index=54 data-x=4 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_55" data-index=55 data-x=5 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_56" data-index=56 data-x=6 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_57" data-index=57 data-x=7 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_58" data-index=58 data-x=8 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_59" data-index=59 data-x=9 data-y=5 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>	
+                 <td class="element" id="element_61" data-index=61 data-x=0 data-y=6 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_62" data-index=62 data-x=1 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_63" data-index=63 data-x=2 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_64" data-index=64 data-x=3 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_65" data-index=65 data-x=4 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_66" data-index=66 data-x=5 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_67" data-index=67 data-x=6 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_68" data-index=68 data-x=7 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_69" data-index=69 data-x=8 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_70" data-index=70 data-x=9 data-y=6 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>	
+                 <td class="element" id="element_70" data-index=70 data-x=0 data-y=7 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_71" data-index=71 data-x=1 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_72" data-index=72 data-x=2 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_73" data-index=73 data-x=3 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_74" data-index=74 data-x=4 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_75" data-index=75 data-x=5 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_76" data-index=76 data-x=6 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_77" data-index=77 data-x=7 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_78" data-index=78 data-x=8 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_79" data-index=79 data-x=9 data-y=7 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>	
+                 <td class="element" id="element_80" data-index=80 data-x=0 data-y=8 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_81" data-index=81 data-x=1 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_82" data-index=82 data-x=2 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_83" data-index=83 data-x=3 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_84" data-index=84 data-x=4 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_85" data-index=85 data-x=5 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_86" data-index=86 data-x=6 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_87" data-index=87 data-x=7 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_88" data-index=88 data-x=8 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+                 <td class="element" id="element_89" data-index=89 data-x=9 data-y=8 style="border-right: 1px solid black; border-top: 1px solid black;"></td>
+			</tr>
+			<tr>	
+                 <td class="element" id="element_90" data-index=90 data-x=0 data-y=9 style="border-left: 1px solid black; border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+                 <td class="element" id="element_91" data-index=91 data-x=1 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+                 <td class="element" id="element_92" data-index=92 data-x=2 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+                 <td class="element" id="element_93" data-index=93 data-x=3 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+                 <td class="element" id="element_94" data-index=94 data-x=4 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+                 <td class="element" id="element_95" data-index=95 data-x=5 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+                 <td class="element" id="element_96" data-index=96 data-x=6 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+                 <td class="element" id="element_97" data-index=97 data-x=7 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+                 <td class="element" id="element_98" data-index=98 data-x=8 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+				 <td class="element" id="element_99" data-index=99 data-x=9 data-y=9 style="border-right: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black;"></td>
+			</tr>
+			<tr>	
+				 <td class="element" id="ultest" data-index=102 data-x=0 data-y=0></td>
+				 <td class="element" id="drtest" data-index=103 data-x=9 data-y=9></td>
+            </tr>
+         </table>
+      </div>
+	  <img id="image">
+   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+   <script src="/static/html2canvas.js" type="text/javascript"></script>
+   <script>
+		var isWin = false;
+		var isDie = false;
+		var hole_location
+		var cookie_location;
+		var player_location;
+		var length = parseInt(Math.random()*10)+1
+		
+		function makeOtherStuff(){
+			cookie_location = parseInt(Math.random()*99)
+			player_location = parseInt(Math.random()*99)
+			while(cookie_location == player_location){
+				player_location = parseInt(Math.random()*99)
+			}
+		}
+		
+		function makeHoles(){
+/*
+			hole_location = parseInt(Math.random()*99)
+			while(cookie_location == hole_location && player_location == hole_location){
+					hole_location = parseInt(Math.random()*99)
+			}
+*/
+			hole_location = 45
+		}
+		
+		function initGame(){
+			makeOtherStuff()
+			makeHoles()
+		}
+			
+		
+	   function distance(start, end) {
+			var xdist = Math.abs(end[0] - start[0])
+			var ydist = Math.abs(end[1] - start[1])
+			return xdist + ydist;
+	   }
+
+
+		function runDNN(){				
+		   initGame()
+		   
+		$("#element_"+ cookie_location).append("<img src='/static/cookie.png' style='margin-left: 3px'>");
+		$("#element_"+ player_location).append("<img src='/static/player.png' style='margin-left: 3px'>");
+		$("#element_"+ hole_location).append("<img src='/static/hole.png' style='margin-left: 3px'>");
+			setInterval(function(){
+				checkDie();
+				checkWin();
+				if(isWin || isDie) clearInterval();
+				$.ajax({
+					url: "/baselinePredict",
+					method: "POST",
+					data: { playerLocation : player_location, cookieLocation : cookie_location, holeLocation : hole_location },
+					dataType: "json",
+					success: function(data){
+						var final_moves = [[]];
+						final_moves.shift();
+						//left
+						if($("#element_" + player_location).data("x") != $("#ultest").data("x")){
+							final_moves.push([$("#element_" + player_location).data("x") - 1, $("#element_" + player_location).data("y"), -1]);
+						}
+						//top
+						if($("#element_" + player_location).data("y") != $("#ultest").data("y")){
+							final_moves.push([$("#element_" + player_location).data("x"), $("#element_" + player_location).data("y") - 1, -10]);
+						}
+						//right
+						if($("#element_" + player_location).data("x") != $("#drtest").data("x")){
+							final_moves.push([$("#element_" + player_location).data("x") + 1, $("#element_" + player_location).data("y"), 1]);
+						}
+						//bottom
+						if($("#element_" + player_location).data("y") != $("#drtest").data("y")){
+							final_moves.push([$("#element_" + player_location).data("x"), $("#element_" + player_location).data("y") + 1, 10]);
+						}
+						var final_move_distances = [];
+						var mindex = 100;
+						var mindist = 100;
+						console.log(final_moves);
+						console.log(data);
+						for(var i = 0; i < final_moves.length; i++){
+							final_move_distances.push(distance(final_moves[i], indexToMove(parseInt(data.answer))));
+							if(distance(final_moves[i], indexToMove(parseInt(data.answer))) < mindist && data.answer != hole_location){
+								mindex = final_moves[i][2];
+								mindist = distance(final_moves[i], indexToMove(parseInt(data.answer)));
+							}
+						}
+						
+						//move player
+						$("#element_" + player_location).empty();
+						player_location += mindex;
+						$("#element_" + player_location).append("<img src='/static/player.png' style='margin-left: 3px'>");
+						
+						console.log(mindex);
+						console.log(player_location);
+					}
+				});
+				if(player_location == cookie_location) clearInterval();
+			}, 1000);
+		}	
+		
+
+			
+
+				   
+	   function checkDie(){
+			if(player_location == hole_location){
+				alert("you died lol");
+				isDie = true;
+			}
+	   }
+	   
+	   function checkWin(){
+			if(player_location == cookie_location){
+				alert("win");
+				isWin = true;
+			}
+	   }
+	   
+	   
+	   function indexToMove(index){
+			var xpos = index % 10;
+			var ypos = index / 10;
+			return [xpos,ypos,index];
+	   }
+	   
+	   function readTextFile(file){
+			var rawFile = new XMLHttpRequest();
+			rawFile.open("GET", file, false);
+			rawFile.onreadystatechange = function ()
+			{
+				if(rawFile.readyState === 4)
+				{
+					if(rawFile.status === 200 || rawFile.status == 0)
+					{
+						var allText = rawFile.responseText;
+						console.log(allText);
+					}
+				}
+			}
+			rawFile.send(null);
+		}
+	   
+	   
+	   
+	   var moves = [[]];
+	   moves.shift();
+	   $('#staticBackdrop').modal('show');
+
+	function runCNN(){
+		initGame()
+		$("#element_"+ hole_location).append("<img src='/static/hole.png' style='margin-left: 3px'>");
+		$("#element_"+ cookie_location).append("<img src='/static/cookie.png' style='margin-left: 3px'>");
+		$("#element_"+ player_location).append("<img src='/static/player.png' style='margin-left: 3px'>");
+		setInterval(function(){
+			checkDie();
+			checkWin();
+			if(isWin || isDie) clearInterval();
+			html2canvas(document.getElementById("table")).then(function(canvas) {
+				canvas.toBlob(function(blob){
+					var imageUrl = URL.createObjectURL(blob)
+					var blobstring = ""
+					document.querySelector("#image").src = imageUrl;
+					var reader = new FileReader()
+					reader.onload = function () {
+						blobstring = reader.result;
+					}
+					reader.readAsDataURL(blob)
+					html2canvas(document.getElementById("table")).then(async function(canvas) {
+						document.body.appendChild(canvas);
+						var link = document.createElement('a');
+						link.download = "currentBoard.png";
+						link.href = $('canvas')[0].toDataURL("image/png")
+						await link.click();
+						await document.body.removeChild(canvas);
+						$.ajax({
+							url: "/convolutionalPredict",
+							method: "POST",
+							success: function(data){
+								$("#element_" + player_location).empty();
+								var answer = data.answer
+								if(answer == 3) answer = -1
+								if(answer == 2) answer = 10
+								if(answer == 1) answer = 1
+								if(answer == 0) answer = -10
+								if($("#element_" + player_location).data("x") == $("#ultest").data("x") && answer == -1){
+									answer = 0;
+								}
+								if($("#element_" + player_location).data("y") == $("#ultest").data("y") && answer == -10){
+									answer = 0;
+								}
+								if($("#element_" + player_location).data("x") == $("#drtest").data("x") && answer == 1){
+									answer = 0;
+								}
+								if($("#element_" + player_location).data("y") == $("#drtest").data("y") && answer == 10){
+									answer = 0;
+								}
+								player_location += answer;
+								$("#element_" + player_location).append("<img src='/static/player.png' style='margin-left: 3px'>");
+							}
+						})
+					})
+					
+					
+				})
+			})
+			
+		}, 1500)
+	}
+
+	function dataToImages(){
+		$.ajax({
+			url: "/readData",
+			method: "POST",
+			dataType: "json",
+			success: async function(data){
+				for (var i = 0; i < data.input.length; i++){
+					await $("#element_"+ data.input[i][2]).append("<img src='/static/hole.png' style='margin-left: 3px'>");
+					await $("#element_"+ data.input[i][1]).append("<img src='/static/cookie.png' style='margin-left: 3px'>");
+					await $("#element_"+ data.input[i][0]).append("<img src='/static/player.png' style='margin-left: 3px'>");
+					await html2canvas(document.getElementById("table")).then(function(canvas) {
+						document.body.appendChild(canvas);
+						var link = document.createElement('a');
+						link.download = + data.output[i] + ".png";
+						link.href = $('canvas')[0].toDataURL("image/png")
+						link.click();
+						document.body.removeChild(canvas);
+						$("#element_"+ data.input[i][2]).children().remove();
+						$("#element_"+ data.input[i][1]).children().remove();
+						$("#element_"+ data.input[i][0]).children().remove();
+					});						
+				}
+			}
+		
+		});
+	}
+	function makeImageData(){
+		setInterval(function(){
+			initGame()
+			$("#element_"+ hole_location).append("<img src='/static/hole.png' style='margin-left: 3px'>");
+			$("#element_"+ cookie_location).append("<img src='/static/cookie.png' style='margin-left: 3px'>");
+			$("#element_"+ player_location).append("<img src='/static/player.png' style='margin-left: 3px'>");
+			var ree = []				
+			function find_move(){
+				//down
+				if(best_move_index == player_location + 10){
+					return 3
+				//up
+				}else if(best_move_index == player_location - 10){
+					return 1
+				//right
+				}else if(best_move_index == player_location + 1){
+					return 2
+				//left
+				}else if(best_move_index == player_location - 1){
+					return 4
+				}
+			}
+			
+			//left
+			if($("#element_" + player_location).data("x") != $("#ultest").data("x")){
+				ree.push([$("#element_" + player_location).data("x") - 1, $("#element_" + player_location).data("y"), $("#element_" + player_location).data("index") - 1]);
+			}
+			//top
+			if($("#element_" + player_location).data("y") != $("#ultest").data("y")){
+				ree.push([$("#element_" + player_location).data("x"), $("#element_" + player_location).data("y") - 1, $("#element_" + player_location).data("index") - 10]);
+			}
+			//right
+			if($("#element_" + player_location).data("x") != $("#drtest").data("x")){
+				ree.push([$("#element_" + player_location).data("x") + 1, $("#element_" + player_location).data("y"), $("#element_" + player_location).data("index") + 1]);
+			}
+			//bottom
+			if($("#element_" + player_location).data("y") != $("#drtest").data("y")){
+				ree.push([$("#element_" + player_location).data("x"), $("#element_" + player_location).data("y") + 1, $("#element_" + player_location).data("index") + 10]);
+			}
+
+			var best_move = 0;
+			for(var i = 0; i < ree.length; i++){
+					if(distance(ree[i],indexToMove(cookie_location)) < distance(ree[best_move],indexToMove(cookie_location))){
+						best_move = i;
+					}
+			}
+			var best_move_index = ree[best_move][2];
+				html2canvas(document.getElementById("table")).then(function(canvas) {
+							document.body.appendChild(canvas);
+							var link = document.createElement('a');
+							link.download = find_move() + ".png";
+							link.href = $('canvas')[0].toDataURL("image/png")
+							link.click();
+							document.body.removeChild(canvas);
+				})
+			$("#element_"+ player_location).children().remove();     
+			$("#element_"+ cookie_location).children().remove();
+			for(var i = 0; i < length; i++){
+				$("#element_"+ hole_location[i]).children().remove();
+			}
+		}, 500)
+	}
+	
+	function makeTextData(){
+		setInterval(function(){
+			initGame()
+			
+		//$("#element_"+ cookie_location).append("<img src='/static/cookie.png' style='margin-left: 3px'>");
+		//$("#element_"+ player_location).append("<img src='/static/player.png' style='margin-left: 3px'>");
+		//$("#element_"+ hole_location).append("<img src='/static/hole.png' style='margin-left: 3px'>");
+			console.log("worked")
+			var ree = []				
+			function find_move(){
+				//down
+				if(best_move_index == player_location + 10){
+					return 3
+				//up
+				}else if(best_move_index == player_location - 10){
+					return 1
+				//right
+				}else if(best_move_index == player_location + 1){
+					return 2
+				//left
+				}else if(best_move_index == player_location - 1){
+					return 4
+				}
+			}
+			
+			//left
+			if($("#element_" + player_location).data("x") != $("#ultest").data("x")){
+				ree.push([$("#element_" + player_location).data("x") - 1, $("#element_" + player_location).data("y"), $("#element_" + player_location).data("index") - 1]);
+			}
+			//top
+			if($("#element_" + player_location).data("y") != $("#ultest").data("y")){
+				ree.push([$("#element_" + player_location).data("x"), $("#element_" + player_location).data("y") - 1, $("#element_" + player_location).data("index") - 10]);
+			}
+			//right
+			if($("#element_" + player_location).data("x") != $("#drtest").data("x")){
+				ree.push([$("#element_" + player_location).data("x") + 1, $("#element_" + player_location).data("y"), $("#element_" + player_location).data("index") + 1]);
+			}
+			//bottom
+			if($("#element_" + player_location).data("y") != $("#drtest").data("y")){
+				ree.push([$("#element_" + player_location).data("x"), $("#element_" + player_location).data("y") + 1, $("#element_" + player_location).data("index") + 10]);
+			}
+
+			var best_move = 0;
+			for(var i = 0; i < ree.length; i++){
+					if(distance(ree[i],indexToMove(cookie_location)) < distance(ree[best_move],indexToMove(cookie_location))){
+						best_move = i;
+					}
+			}
+			var best_move_index = ree[best_move][2];
+			var request = $.ajax({
+				url: "/filewrite",
+				method: "POST",
+				data: { bestMoveIndex:find_move(),playerLocation:player_location,cookieLocation:cookie_location,holeLocation:hole_location},
+				dataType: "json"
+				});
+			request.done(function( msg ) {
+				console.log( msg );
+			});
+			//$("#element_"+ player_location).children().remove();     
+			//$("#element_"+ cookie_location).children().remove();
+			//$("#element_"+ hole_location).children().remove();
+		}, 100)
+	}
+	
+	function manual(){
+		$(document).keydown(function(e) {
+			if(e.which == 37) {
+				if(player_location % 17 != 0){
+					$("#element_" + player_location).empty();
+					player_location--;
+					$("#element_" + player_location).append("<img src='player.png' style='margin-left: 3px'>");
+				}
+			}
+			if(e.which == 38) {
+				if((player_location - 17) >= 0){
+					$("#element_" + player_location).empty();
+					player_location -= 17;
+					$("#element_" + player_location).append("<img src='player.png' style='margin-left: 3px'>");
+				}
+			}
+			if(e.which == 39) {
+				if((player_location + 1) % 17 != 0){
+					$("#element_" + player_location).empty();
+					player_location++;
+					$("#element_" + player_location).append("<img src='player.png' style='margin-left: 3px'>");
+				}
+			}
+			if(e.which == 40) {
+				if((player_location + 17) <= 101 ){
+					$("#element_" + player_location).empty();
+					player_location += 17;
+					$("#element_" + player_location).append("<img src='player.png' style='margin-left: 3px'>");
+				}
+			}
+		});
+	}
+       $(document).ready(function() {
+		});
+
+
+   </script>
+   </body>
+
+
+</html>
+ 
+
+

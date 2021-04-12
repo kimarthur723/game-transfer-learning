@@ -1,0 +1,2 @@
+30 trials each
+CNN reached the cookie 29 times, DNN reached the cookie 3 time
